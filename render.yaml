@@ -1,0 +1,46 @@
+# Render blueprint for the API (https://render.com/docs/blueprint-spec).
+# Secrets are declared with sync: false and must be entered in the dashboard.
+services:
+  - type: web
+    name: nutritrack-api
+    runtime: node
+    rootDir: .
+    buildCommand: npm ci && npm run build -w server
+    startCommand: npm run start -w server
+    healthCheckPath: /health/ready
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: TRUST_PROXY
+        value: '1'
+      - key: COOKIE_SAMESITE
+        value: lax
+      - key: MONGODB_URI
+        sync: false
+      - key: CLIENT_ORIGIN
+        sync: false
+      - key: APP_URL
+        sync: false
+      - key: JWT_ACCESS_SECRET
+        generateValue: true
+      - key: CSRF_SECRET
+        generateValue: true
+      - key: USDA_API_KEY
+        sync: false
+      - key: NUTRITIONIX_APP_ID
+        sync: false
+      - key: NUTRITIONIX_API_KEY
+        sync: false
+      - key: OPEN_FOOD_FACTS_USER_AGENT
+        sync: false
+      # Set to smtp once SMTP_HOST and EMAIL_FROM are filled in; none means no email is sent.
+      - key: EMAIL_PROVIDER
+        value: none
+      - key: SMTP_HOST
+        sync: false
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false
+      - key: EMAIL_FROM
+        sync: false

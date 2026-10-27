@@ -1,0 +1,154 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/inter';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * Design tokens. Every color in the app comes from these variables; components
+ * use the Tailwind names mapped below (bg-surface, text-ink, border-line, ...).
+ * Light theme is the default and mirrors the reference dashboard.
+ */
+:root {
+  --page: #f5f7fc;
+  --surface: #ffffff;
+  --surface-2: #f9fafd;
+  --soft: #edf2ff;
+  --line: #dce3ef;
+  --line-strong: #c8d2e3;
+  --ink: #20283a;
+  --muted: #707b90;
+  --subtle: #9aa4b6;
+  --primary: #3563f0;
+  --primary-hover: #2852d8;
+  --primary-ink: #ffffff;
+  --success: #16a36a;
+  --success-soft: #e7f6ef;
+  --warning: #f59e0b;
+  --warning-ink: #9a5b00;
+  --warning-soft: #fef4e2;
+  --danger: #e53935;
+  --danger-soft: #fdecec;
+  --protein: #3563f0;
+  --carbs: #16a36a;
+  --fat: #d97706;
+  --water: #0284c7;
+  --skeleton: #e7ecf5;
+  --skeleton-shine: #f3f6fb;
+  --shadow: 0 1px 2px rgb(32 40 58 / 0.04), 0 2px 8px rgb(32 40 58 / 0.04);
+  --shadow-lg: 0 8px 30px rgb(32 40 58 / 0.12);
+  color-scheme: light;
+}
+
+.dark {
+  --page: #0f1422;
+  --surface: #161d2e;
+  --surface-2: #1b2336;
+  --soft: #1d2a4a;
+  --line: #2a3450;
+  --line-strong: #364264;
+  --ink: #e7ebf3;
+  --muted: #9aa4b8;
+  --subtle: #6f7a90;
+  --primary: #5b82ff;
+  --primary-hover: #7395ff;
+  --primary-ink: #0b1020;
+  --success: #34c48b;
+  --success-soft: #11342a;
+  --warning: #fbbf24;
+  --warning-ink: #fbbf24;
+  --warning-soft: #3a2c0c;
+  --danger: #f26b67;
+  --danger-soft: #3b1a1d;
+  --protein: #6f93ff;
+  --carbs: #34c48b;
+  --fat: #fbbf24;
+  --water: #38bdf8;
+  --skeleton: #222b40;
+  --skeleton-shine: #2a3550;
+  --shadow: 0 1px 2px rgb(0 0 0 / 0.3);
+  --shadow-lg: 0 8px 30px rgb(0 0 0 / 0.45);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --color-page: var(--page);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-soft: var(--soft);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-ink: var(--primary-ink);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-ink: var(--warning-ink);
+  --color-warning-soft: var(--warning-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-protein: var(--protein);
+  --color-carbs: var(--carbs);
+  --color-fat: var(--fat);
+  --color-water: var(--water);
+  --radius-card: 14px;
+  --radius-control: 9px;
+  --shadow-card: var(--shadow);
+  --shadow-pop: var(--shadow-lg);
+}
+
+@layer base {
+  html,
+  body {
+    background: var(--page);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    overflow-x: hidden;
+  }
+  :focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+  }
+  ::selection {
+    background: color-mix(in srgb, var(--primary) 25%, transparent);
+  }
+}
+
+@layer components {
+  .skeleton {
+    background: linear-gradient(90deg, var(--skeleton) 25%, var(--skeleton-shine) 37%, var(--skeleton) 63%);
+    background-size: 400% 100%;
+    animation: shimmer 1.4s ease infinite;
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

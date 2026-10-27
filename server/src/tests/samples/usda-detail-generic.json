@@ -1,0 +1,166 @@
+{
+ "fdcId": 168897,
+ "description": "Wild rice, cooked",
+ "publicationDate": "4/1/2019",
+ "foodNutrients": [
+  {
+   "type": "FoodNutrient",
+   "nutrient": {
+    "id": 1008,
+    "number": "208",
+    "name": "Energy",
+    "rank": 300,
+    "unitName": "kcal"
+   },
+   "foodNutrientDerivation": {
+    "id": 49,
+    "code": "NC",
+    "description": "Calculated",
+    "foodNutrientSource": {
+     "id": 2,
+     "code": "4",
+     "description": "Calculated or imputed"
+    }
+   },
+   "id": 1397365,
+   "amount": 101.0,
+   "dataPoints": 0
+  },
+  {
+   "type": "FoodNutrient",
+   "nutrient": {
+    "id": 1003,
+    "number": "203",
+    "name": "Protein",
+    "rank": 600,
+    "unitName": "g"
+   },
+   "id": 1397389,
+   "amount": 3.99,
+   "dataPoints": 8
+  },
+  {
+   "type": "FoodNutrient",
+   "nutrient": {
+    "id": 1004,
+    "number": "204",
+    "name": "Total lipid (fat)",
+    "rank": 800,
+    "unitName": "g"
+   },
+   "id": 1397363,
+   "amount": 0.34,
+   "dataPoints": 11
+  },
+  {
+   "type": "FoodNutrient",
+   "nutrient": {
+    "id": 1005,
+    "number": "205",
+    "name": "Carbohydrate, by difference",
+    "rank": 1110,
+    "unitName": "g"
+   },
+   "foodNutrientDerivation": {
+    "id": 49,
+    "code": "NC",
+    "description": "Calculated",
+    "foodNutrientSource": {
+     "id": 2,
+     "code": "4",
+     "description": "Calculated or imputed"
+    }
+   },
+   "id": 1397364,
+   "amount": 21.34,
+   "dataPoints": 0
+  },
+  {
+   "type": "FoodNutrient",
+   "nutrient": {
+    "id": 1079,
+    "number": "291",
+    "name": "Fiber, total dietary",
+    "rank": 1200,
+    "unitName": "g"
+   },
+   "foodNutrientDerivation": {
+    "id": 1,
+    "code": "A",
+    "description": "Analytical",
+    "foodNutrientSource": {
+     "id": 1,
+     "code": "1",
+     "description": "Analytical or derived from analytical"
+    }
+   },
+   "id": 1397347,
+   "amount": 1.8,
+   "dataPoints": 4,
+   "max": 2.0,
+   "min": 1.7
+  },
+  {
+   "type": "FoodNutrient",
+   "nutrient": {
+    "id": 2000,
+    "number": "269",
+    "name": "Total Sugars",
+    "rank": 1510,
+    "unitName": "g"
+   },
+   "id": 1397356,
+   "amount": 0.73,
+   "dataPoints": 0
+  },
+  {
+   "type": "FoodNutrient",
+   "nutrient": {
+    "id": 1093,
+    "number": "307",
+    "name": "Sodium, Na",
+    "rank": 5800,
+    "unitName": "mg"
+   },
+   "id": 1397401,
+   "amount": 3.0,
+   "dataPoints": 5
+  },
+  {
+   "type": "FoodNutrient",
+   "nutrient": {
+    "id": 1258,
+    "number": "606",
+    "name": "Fatty acids, total saturated",
+    "rank": 9700,
+    "unitName": "g"
+   },
+   "id": 1397392,
+   "amount": 0.049,
+   "dataPoints": 0
+  }
+ ],
+ "foodPortions": [
+  {
+   "id": 83947,
+   "gramWeight": 164.0,
+   "sequenceNumber": 1,
+   "amount": 1.0,
+   "modifier": "cup",
+   "measureUnit": {
+    "id": 9999,
+    "name": "undetermined",
+    "abbreviation": "undetermined"
+   }
+  }
+ ],
+ "dataType": "SR Legacy",
+ "foodClass": "FinalFood",
+ "ndbNumber": 20089,
+ "isHistoricalReference": true,
+ "foodCategory": {
+  "id": 20,
+  "code": "2000",
+  "description": "Cereal Grains and Pasta"
+ }
+}
