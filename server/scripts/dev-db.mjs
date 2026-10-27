@@ -21,7 +21,3 @@ const stop = async () => {
 };
 process.on('SIGINT', stop);
 process.on('SIGTERM', stop);
-
-
-GtFmA80yYNLzG4tg
-parth_nutritrack
