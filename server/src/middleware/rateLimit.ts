@@ -1,6 +1,7 @@
 import rateLimit, { ipKeyGenerator, type Options } from 'express-rate-limit';
 import type { Request } from 'express';
 import { env } from '../config/env';
+import { sharedStore } from './mongoRateLimitStore';
 
 const handler: Options['handler'] = (req, res, _next, options) => {
   res.status(options.statusCode).json({
@@ -18,15 +19,17 @@ export const loginLimiter = rateLimit({
   ...base,
   windowMs: 15 * 60_000,
   limit: 10,
+  store: sharedStore('login'),
   keyGenerator: (req) => `${ipKey(req)}:${String(req.body?.email ?? '').toLowerCase().slice(0, 254)}`,
 });
 /** Per-IP ceiling for all auth endpoints (configurable via AUTH_RATE_LIMIT). */
-export const authLimiter = rateLimit({ ...base, windowMs: 15 * 60_000, limit: () => env().AUTH_RATE_LIMIT, keyGenerator: ipKey });
+export const authLimiter = rateLimit({ ...base, windowMs: 15 * 60_000, limit: () => env().AUTH_RATE_LIMIT, store: sharedStore('auth'), keyGenerator: ipKey });
 /** Emails (verification, password reset): strict per account/recipient to prevent abuse. */
 export const emailLimiter = rateLimit({
   ...base,
   windowMs: 60 * 60_000,
   limit: 5,
+  store: sharedStore('email'),
   keyGenerator: (req) => req.auth?.userId ?? `${ipKey(req)}:${String(req.body?.email ?? '').toLowerCase().slice(0, 254)}`,
 });
 export const searchLimiter = rateLimit({ ...base, windowMs: 60_000, limit: 60, keyGenerator: userOrIp });

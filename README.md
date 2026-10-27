@@ -8,6 +8,9 @@ Built with React, Express, MongoDB and TypeScript as a college project, followin
 practices: shared validated contracts, cookie-based auth with rotating refresh tokens and
 CSRF protection, server-side nutrition math, and automated unit, integration and end-to-end tests.
 
+Demo Video Link: https://drive.google.com/file/d/1ZsQT_c-xd1XlwGjzpvGq_5Ny0bkg-WhT/view?usp=sharing
+
+
 ![Dashboard](docs/screenshots/dashboard.png)
 
 | Food search (live USDA data) | Diary | Calendar & history |

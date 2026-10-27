@@ -48,6 +48,8 @@ const schema = z
     EMAIL_FROM: optionalString,
 
     REMINDERS_ENABLED: bool(true),
+    // Bearer token for GET /api/cron/reminders (serverless hosting, where no always-on reminder job exists).
+    CRON_SECRET: z.string().min(16, 'must be at least 16 characters').optional().or(z.literal('').transform(() => undefined)),
   })
   .superRefine((env, ctx) => {
     if (env.EMAIL_PROVIDER === 'smtp' && (!env.SMTP_HOST || !env.EMAIL_FROM)) {

@@ -10,6 +10,7 @@ import { isDatabaseReady } from './config/db';
 import { requestId } from './middleware/requestId';
 import { errorHandler, notFoundHandler } from './middleware/errorHandler';
 import { apiRouter } from './routes';
+import { cronRouter } from './routes/cron';
 
 export function createApp() {
   const e = env();
@@ -53,6 +54,8 @@ export function createApp() {
     res.status(ready ? 200 : 503).json({ status: ready ? 'ready' : 'not_ready', database: ready ? 'connected' : 'disconnected' });
   });
   app.get('/health', (_req, res) => res.json({ status: 'ok', database: isDatabaseReady() ? 'connected' : 'disconnected' }));
+
+  app.use('/api/cron', cronRouter());
 
   app.use('/api/v1', (_req, res, next) => {
     res.setHeader('Cache-Control', 'no-store');

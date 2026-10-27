@@ -6,10 +6,10 @@ mongoose.set('strictQuery', true);
 // primitive types before reaching a query, and Express 5's default "simple"
 // query parser never produces nested objects.
 
-export async function connectDatabase(uri: string): Promise<void> {
+export async function connectDatabase(uri: string, opts: { maxPoolSize?: number } = {}): Promise<void> {
   mongoose.connection.on('disconnected', () => logger().warn('MongoDB disconnected'));
   mongoose.connection.on('reconnected', () => logger().info('MongoDB reconnected'));
-  await mongoose.connect(uri, { serverSelectionTimeoutMS: 10_000, maxPoolSize: 20, autoIndex: true });
+  await mongoose.connect(uri, { serverSelectionTimeoutMS: 10_000, maxPoolSize: opts.maxPoolSize ?? 20, autoIndex: true });
   await Promise.all(Object.values(mongoose.models).map((m) => m.createIndexes()));
   logger().info('MongoDB connected');
 }
