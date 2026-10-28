@@ -20,7 +20,7 @@ function createLogger() {
   return pino({
     level: e.NODE_ENV === 'test' ? 'silent' : e.LOG_LEVEL,
     redact,
-    transport: e.NODE_ENV === 'development' ? { target: 'pino-pretty', options: { colorize: true } } : undefined,
+    transport: e.NODE_ENV === 'development' && !process.env.VERCEL ? { target: 'pino-pretty', options: { colorize: true } } : undefined,
   });
 }
 
